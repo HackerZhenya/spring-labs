@@ -21,4 +21,8 @@ public class PostService {
     public List<Post> listAllPosts() {
         return database;
     }
+
+    public void create(String text) {
+        database.add(new Post(text));
+    }
 }
