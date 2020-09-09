@@ -8,14 +8,15 @@ import java.util.List;
 
 @Service
 public class PostService {
+    private static Long postId = 0L;
     private final List<Post> database;
 
     public PostService() {
-        this.database = new ArrayList<>() {{
-            add(new Post("Первый пост"));
-            add(new Post("Второй пост"));
-            add(new Post("Третий пост"));
-        }};
+        this.database = new ArrayList<>();
+
+        this.create("Первый пост");
+        this.create("Второй пост");
+        this.create("Третий пост");
     }
 
     public List<Post> listAllPosts() {
@@ -23,6 +24,6 @@ public class PostService {
     }
 
     public void create(String text) {
-        database.add(new Post(text));
+        database.add(new Post(postId++, text));
     }
 }
